@@ -1,0 +1,91 @@
+// Define Shape interface
+interface Shape {
+    double calculateArea();
+    double calculatePerimeter();
+}
+
+// Create abstract class AbstractShape implementing Shape interface
+abstract class AbstractShape implements Shape {
+    // Common attributes for shapes
+    String color;
+    double length;
+    double width;
+
+    // Constructor
+    public AbstractShape(String color, double length, double width) {
+        this.color = color;
+        this.length = length;
+        this.width = width;
+    }
+
+    // Implementations for calculateArea and calculatePerimeter methods
+    @Override
+    public double calculateArea() {
+        return 0; // Implementation will vary based on shape
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 0; // Implementation will vary based on shape
+    }
+}
+
+// Concrete class Circle extending AbstractShape
+class Circle extends AbstractShape {
+    // Additional attribute for circle
+    double radius;
+
+    // Constructor for Circle
+    public Circle(String color, double radius) {
+        super(color, 0, 0); // Setting length and width as 0 for circle
+        this.radius = radius;
+    }
+
+    // Override calculateArea for circle
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    // Override calculatePerimeter for circle
+    @Override
+    public double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+// Concrete class Rectangle extending AbstractShape
+class Rectangle extends AbstractShape {
+    // Constructor for Rectangle
+    public Rectangle(String color, double length, double width) {
+        super(color, length, width);
+    }
+
+    // Override calculateArea for rectangle
+    @Override
+    public double calculateArea() {
+        return length * width;
+    }
+
+    // Override calculatePerimeter for rectangle
+    @Override
+    public double calculatePerimeter() {
+        return 2 * (length + width);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of Circle and Rectangle
+        Circle circle = new Circle("Red", 5.0);
+        Rectangle rectangle = new Rectangle("Blue", 4.0, 6.0);
+
+        // Display their areas and perimeters
+        System.out.println("Circle Area: " + circle.calculateArea());
+        System.out.println("Circle Perimeter: " + circle.calculatePerimeter());
+
+        System.out.println("Rectangle Area: " + rectangle.calculateArea());
+        System.out.println("Rectangle Perimeter: " + rectangle.calculatePerimeter());
+    }
+}
